@@ -6,5 +6,10 @@ FactoryBot.define do
     password { 'password' }
     password_confirmation { 'password' }
   end
-
+  
+  factory :product do
+    name { 'Product' }
+    description { 'Test Description' }
+    price { 100 }
+  end
 end
