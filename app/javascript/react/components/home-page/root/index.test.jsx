@@ -1,5 +1,18 @@
+import React from 'react'
+import { shallow } from 'enzyme'
+import HomePageRoot from './index.jsx'
+import { cleanup } from 'react-testing-library';
+
+afterEach(cleanup)
+
 describe('second test', () => {
-  it('should be true if true', () => {
-    expect(true).toBe(true)
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(<HomePageRoot />);
+  });
+
+  it('should render a HomePageRoot component', () => {
+    expect(wrapper).toBeTruthy()
   })
 })
