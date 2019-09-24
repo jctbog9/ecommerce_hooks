@@ -4,10 +4,12 @@
   "dependencies": {
     "@rails/webpacker": "3.5",
     "babel-core": "^7.0.0-bridge.0",
+    "jest-watch-typeahead": "^0.4.0",
     "prop-types": "~15.6.0",
     "react": "~16.8.0",
     "react-dom": "~16.8.0",
     "react-router-dom": "5.0.0",
+    "react-testing-library": "^6.0.0",
     "redbox-react": "1.6.0"
   },
   "devDependencies": {
@@ -30,12 +32,12 @@
   "scripts": {
     "start": "./bin/webpack-dev-server",
     "test": "node_modules/.bin/jest",
-    "test:dev": "node_modules/.bin/jest --notify --watch"
+    "test:dev": "node_modules/.bin/jest --watch"
   },
   "jest": {
     "automock": false,
-    "roots": [
-      "spec/javascript"
+    "collectCoverageFrom": [
+      "app/javascript/*.{js,jsx}"
     ],
     "moduleDirectories": [
       "node_modules",
@@ -44,6 +46,13 @@
     "setupFiles": [
       "./spec/javascript/support/enzyme.js"
     ],
-    "testURL": "http://localhost/"
+    "testPathIgnorePatterns": [
+      "<rootDir>[/\\\\](node_modules|scripts|server|config)[/\\\\]"
+    ],
+    "testURL": "http://localhost/",
+    "watchPlugins": [
+      "jest-watch-typeahead/filename",
+      "jest-watch-typeahead/testname"
+    ]
   }
 }
